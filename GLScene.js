@@ -16,8 +16,9 @@ void main () {
   gl_FragColor = vec4(uv.x, uv.y, 0.5, 1.0);
 }`;
 
-import * as PIXI from 'pixi.js';
-
+navigator.userAgent = "iPhone";
+var PIXI = require('pixi.js');
+// import phaser from 'phaser-ce'
 export default class GLScene extends React.Component {
 
 
@@ -31,9 +32,9 @@ export default class GLScene extends React.Component {
   }
 
   _onContextCreate = gl => {
-      var app = new PIXI.Application({
-          context: gl
-      });
+      // var app = new PIXI.Application({
+      //     context: gl
+      // });
 
 
     // // Compile vertex and fragment shader
