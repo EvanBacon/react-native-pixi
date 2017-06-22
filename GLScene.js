@@ -21,8 +21,7 @@ export const createTextureAsync = async ({ asset }) => {
   if (!asset.localUri) {
     await asset.downloadAsync();
   }
-  
-  const texture = new PIXI.Texture.fromImage(asset)
+  const texture = new PIXI.Texture.fromImage(asset.localUri)
   // texture.image = {
   //   data: asset,
   //   width: asset.width,
@@ -37,9 +36,9 @@ export const createTextureAsync = async ({ asset }) => {
 var textStyle = { fill: 0xffffff };
 function createSprite(texture, text) {
 	var sprite = new PIXI.Sprite(texture);
-	sprite.addChild(new PIXI.Text(text, textStyle));
+	// sprite.addChild(new PIXI.Text(text, textStyle));
 	sprite.anchor.set(0.5, 1);
-	sprite.children[0].anchor.set(0.5, 0);
+	// sprite.children[0].anchor.set(0.5, 0);
 	sprite.interactive=true;
 	// sprite.on('click', function() { this.alpha = 1.7 - this.alpha; } );
 	return sprite;
@@ -75,8 +74,8 @@ gl.getContextAttributes = (() => {
 
     window.WebGLRenderingContext = gl;
 
-    const {drawingBufferWidth: width, drawingBufferHeight: height} = gl;
-    // const {width, height} = Dimensions.get('window')
+    // const {drawingBufferWidth: width, drawingBufferHeight: height} = gl;
+    const {width, height} = Dimensions.get('window')
     var app = new PIXI.Application(width, height, {
       context: gl,
       backgroundColor : 0x1099bb
@@ -137,7 +136,8 @@ gl.getContextAttributes = (() => {
 
 
     app.ticker.add(function(delta) {
-    
+            gl.endFrameEXP();
+
     });
 
     // // Compile vertex and fragment shader

@@ -5,9 +5,7 @@ import GLScene from './GLScene'
 export default class App extends React.Component {
   render() {
     return (
-      <View>
-      <GLScene style={{flex: 1}} />
-      </View>
+      <GLScene style={{flex: 1, backgroundColor: 'red'}} />
     );
   }
 }

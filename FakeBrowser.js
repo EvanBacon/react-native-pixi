@@ -92,6 +92,7 @@ let { width, height } = Dimensions.get('window');
 window.innerWidth = window.clientWidth = width;
 window.innerHeight = window.clientHeight = height;
 window.document = new DOMDocument();
+window.location = "";
 navigator.userAgent = "iPhone";
 
 global.Image = (width = 0, height = 0) => {
