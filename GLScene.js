@@ -1,6 +1,6 @@
 import React from 'react';
 import { GLView } from 'expo';
-
+import './FakeBrowser'
 const vertSrc = `
 attribute vec2 position;
 varying vec2 uv;
@@ -16,7 +16,6 @@ void main () {
   gl_FragColor = vec4(uv.x, uv.y, 0.5, 1.0);
 }`;
 
-navigator.userAgent = "iPhone";
 var PIXI = require('pixi.js');
 // import phaser from 'phaser-ce'
 export default class GLScene extends React.Component {
@@ -32,9 +31,10 @@ export default class GLScene extends React.Component {
   }
 
   _onContextCreate = gl => {
-      // var app = new PIXI.Application({
-      //     context: gl
-      // });
+      window.WebGLRenderingContext = gl;
+      var app = new PIXI.Application({
+          context: gl
+      });
 
 
     // // Compile vertex and fragment shader
