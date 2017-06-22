@@ -94,5 +94,11 @@ window.innerHeight = window.clientHeight = height;
 window.document = new DOMDocument();
 navigator.userAgent = "iPhone";
 
-
+global.Image = (width = 0, height = 0) => {
+  let img = new DOMElement('IMG');;
+  img.width = width
+  img.height = height
+  img.src = "";
+  return img;
+};
 global.performance = null;
