@@ -1,6 +1,11 @@
 import { Image, Dimensions } from 'react-native';
 import EventEmitter from 'EventEmitter';
 
+ /*
+   I took this from @IDE BubbleBounce
+   https://github.com/ide/bubblebounce/blob/master/src/FakeBrowser.js
+*/
+
 class DOMNode {
   constructor(nodeName) {
     this.nodeName = nodeName;
@@ -14,23 +19,27 @@ class DOMNode {
     // unimplemented
   }
 }
-// import Canvas from './Canvas';
+
 class DOMElement extends DOMNode {
   style = {};
   emitter = new EventEmitter();
+
   constructor(tagName) {
     super(tagName.toUpperCase());
-
-    if (this.nodeName == 'CANVAS') {
-
-    }
   }
 
+  insertBefore = () => {
+
+  }
+  
   getContext(contextType) {
+    if (global.canvasContext) {
+      return global.canvasContext;
+    }
     return {
       fillRect: (_ => { }),
       drawImage: (_ => { }),
-      // getImageData: (_ => { }),
+      getImageData: (_ => { }),
       getContextAttributes: (_ => ({
         stencil: true
       })),
@@ -45,16 +54,11 @@ class DOMElement extends DOMNode {
   get tagName() {
     return this.nodeName;
   }
-
-
   addEventListener(eventName, listener) {
-    // unimplemented
-    console.log("VOXEL:: add listener", this.tagName, eventName, listener);
+    console.log("add listener", this.tagName, eventName, listener);
     this.emitter.addListener(eventName, listener)
   }
-
   removeEventListener(eventName, listener) {
-    // unimplemented
     this.emitter.removeListener(eventName, listener)
   }
 }
@@ -67,9 +71,6 @@ class DOMDocument extends DOMElement {
   }
 
   createElement(tagName) {
-    // if (tagName.toLowerCase() === 'canvas') {
-    //   Canvas
-    // }
     return new DOMElement(tagName);
   }
 
@@ -79,11 +80,10 @@ class DOMDocument extends DOMElement {
 }
 
 process.browser = true
-
 window.emitter = new EventEmitter();
 window.addEventListener = (eventName, listener) => {
-  // unimplemented
-  console.log("VOXEL:: add listener", "WINDOW", eventName, listener);
+  
+  console.log("add listener", "WINDOW", eventName, listener);
   window.emitter.addListener(eventName, listener)
 }
 window.removeEventListener = (eventName, listener) => {
@@ -95,22 +95,18 @@ let { width, height } = Dimensions.get('window');
 window.innerWidth = window.clientWidth = width;
 window.innerHeight = window.clientHeight = height;
 window.document = new DOMDocument();
-window.location = "file://";
-navigator.userAgent = "iPhone";
+window.location = "file://"; // <- Not sure about this... or anything for that matter ¯\_(ツ)_/¯
+navigator.userAgent = "iPhone"; // <- This could be made better, but I'm not sure if it'll matter for PIXI
+global.performance = null; 
 
-
+/// I'm just guessing now
 class CustomImage extends Image {
-
   constructor(width, height) {
     super();
-
   }
-
   set src(val) {
     this.source = val;
-
-    if (typeof val === 'string') {
-      
+    if (typeof val === 'string') {  
       Image.prefetch(val);
       this.source = {uri: val};
     } else {
@@ -123,23 +119,22 @@ class CustomImage extends Image {
       }
     }
   }
-
 }
 global.Image = CustomImage;
+
+/// Old version
+
 // global.Image = (width = 0, height = 0) => {
 //   let img = new DOMElement('IMG');;
 //   img.width = width
 //   img.height = height
 //   // img.src = "";
-
 //   if (!asset.localUri) {
 //     await asset.downloadAsync();
 //   }
-
 //   set src = () => {
-
 //   }
-
 //   return img;
 // };
-global.performance = null;
+
+
