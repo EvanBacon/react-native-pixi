@@ -33,9 +33,9 @@ class DOMElement extends DOMNode {
   }
   
   getContext(contextType) {
-    if (global.canvasContext) {
-      return global.canvasContext;
-    }
+    // if (global.canvasContext) {
+    //   return global.canvasContext;
+    // }
     return {
       fillRect: (_ => { }),
       drawImage: (_ => { }),
@@ -97,7 +97,6 @@ window.innerHeight = window.clientHeight = height;
 window.document = new DOMDocument();
 window.location = "file://"; // <- Not sure about this... or anything for that matter ¯\_(ツ)_/¯
 navigator.userAgent = "iPhone"; // <- This could be made better, but I'm not sure if it'll matter for PIXI
-global.performance = null; 
 
 /// I'm just guessing now
 class CustomImage extends Image {
@@ -136,5 +135,4 @@ global.Image = CustomImage;
 //   }
 //   return img;
 // };
-
-
+global.performance = null; 

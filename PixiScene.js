@@ -31,7 +31,7 @@ function createSprite(texture, text) {
 
 var PIXI = require('pixi.js');
 // import phaser from 'phaser-ce'
-export default class GLScene extends React.Component {
+export default class PixiScene extends React.Component {
 
   render() {
     return (
@@ -129,7 +129,7 @@ export default class GLScene extends React.Component {
     // set a fill and a line style again and draw a rectangle
     graphics.lineStyle(2, 0x0000FF, 1);
     graphics.beginFill(0xFF700B, 1);
-    graphics.drawRect(bunny.x, bunny.y, bunny.width, bunny.height);
+    graphics.drawRect(benny.x, benny.y, benny.width, benny.height);
     graphics.endFill();
 
     // draw a rounded rectangle
@@ -146,7 +146,7 @@ export default class GLScene extends React.Component {
 
     app.stage.addChild(graphics);
 
-    app.stage.addChild(bunny);
+    app.stage.addChild(benny);
 
     /*
       Listen to the tick and call `gl.endFrameEXP();`
