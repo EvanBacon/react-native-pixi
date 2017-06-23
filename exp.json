@@ -1,12 +1,12 @@
 {
-  "name": "pixi-expo",
-  "description": "An empty new project",
+  "name": "pixi",
+  "description": "2D Graphics Library",
   "slug": "pixi",
   "privacy": "public",
   "sdkVersion": "18.0.0",
   "version": "1.0.0",
   "orientation": "portrait",
-  "primaryColor": "#cccccc",
+  "primaryColor": "#ea1e63",
   "icon": "./assets/icons/app.png",
   "loading": {
     "icon": "./assets/icons/loading.png",
