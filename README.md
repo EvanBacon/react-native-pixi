@@ -3,7 +3,7 @@
 
 Expo: https://exp.host/@bacon/pixi
 
-![pretty cool huh, no?](https://lh3.googleusercontent.com/yg4KuvrZOl8EdmdxwxuZTC1wO7GunIM4ynwIvLk1h3ydjACZpAPgTo0xGDgUc4w27Bt5fV_-ikCH_OZwAwahl9AziEkHU6cDZD6eIiKa5QheChW-1PdzTI-Apvk13prA18mxlZE2pqn5cujGmVqAYjDqp441P8bQH-psJA9wXM_TxqgJvk3eW3Ny2RSCCVqBk-jwQnmWruw8RTBizaIipGGaISgO28XkEy6ZdYRAKKIgnA9ClcONUsK9Kxr39KUkidNZ_V6UHYG8eUBLQ0yfCJdRXFkOcOmWvT3YC6mVhaIDhrLoJCgqKyfI3pxszzfPumLq_j7ivMdfS1y4zJfn5crtLkeFK5eSgl0RRCDu34iop2P5bfWFYlXP0V5N-365tavPCaZtSbxHDY5xnRjOOjGduIUwzUu8HY2r7_qkWgpSUO9071P4aiOlsnHe6z3uKZoQ0tn-YRNe-HT0cPz8I0W2oAqtgIoC_i0WkuIHxezD4O_U-cjjwKAN8feZJ3w31k_c9fFl_oeJNszIRHGnjeGWgL0SxIk9D5kA7NSWsheFmmxn2XCioFKoaOL5O6_3HYrxMAQrj5DBy9IxK5CKUXdCQfixRaOu4WZsB_Soc8BA5Qh8zQNSzw=w776-h1378-no?raw=true "Preview Gif 😀 ...I love you")
+![pretty cool huh, no?](/demo.png?raw=true "Preview Gif 😀 ...I love you")
 
 ----
 
