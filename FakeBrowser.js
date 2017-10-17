@@ -123,16 +123,16 @@ global.Image = CustomImage;
 
 /// Old version
 
-// global.Image = (width = 0, height = 0) => {
-//   let img = new DOMElement('IMG');;
-//   img.width = width
-//   img.height = height
-//   // img.src = "";
-//   if (!asset.localUri) {
-//     await asset.downloadAsync();
-//   }
-//   set src = () => {
-//   }
-//   return img;
-// };
-global.performance = null; 
+// // global.Image = (width = 0, height = 0) => {
+// //   let img = new DOMElement('IMG');;
+// //   img.width = width
+// //   img.height = height
+// //   // img.src = "";
+// //   if (!asset.localUri) {
+// //     await asset.downloadAsync();
+// //   }
+// //   set src = () => {
+// //   }
+// //   return img;
+// // };
+// global.performance = null; 
