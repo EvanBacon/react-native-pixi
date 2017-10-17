@@ -117,14 +117,10 @@ window.addEventListener = window.addEventListener || ((eventName, listener) => w
 window.removeEventListener = window.removeEventListener || ((eventName, listener) => window.emitter.removeListener(eventName, listener));
 window.document = new DOMDocument();
 window.document.body = new DOMElement('body');
-global.document = window.document;
-
-
-
-
-
 window.location = "file://"; // <- Not sure about this... or anything for that matter ¯\_(ツ)_/¯
-navigator.userAgent = "iPhone"; // <- This could be made better, but I'm not sure if it'll matter for PIXI
+global.userAgent = global.navigator.userAgent = "iPhone"; // <- This could be made better, but I'm not sure if it'll matter for PIXI
+
+global.document = window.document;
 
 /// I'm just guessing now
 class CustomImage extends Image {

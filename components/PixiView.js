@@ -39,6 +39,12 @@ export default class PixiView extends React.Component {
         gl.renderbufferStorage = () => { };
         gl.framebufferRenderbuffer = () => { };
 
+        gl.getContextAttributes = () => ({
+            stencil: true
+        });
+
+        window.WebGLRenderingContext = gl;
+
         await this.props.onContextCreate(gl);
         let lastFrameTime;
         const render = () => {

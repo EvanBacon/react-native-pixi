@@ -47,11 +47,9 @@ class Scene extends React.Component {
   );
 
   onContextCreateAsync = async (gl) => {
-    const { innerWidth: width, innerHeight: height, devicePixelRatio: scale } = window;
-    // const { width: screenWidth, height: screenHeight, scale } = Dimensions.get("window");
-    // const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
-
-
+    // const { innerWidth: width, innerHeight: height, devicePixelRatio: scale } = window;
+    const { width, height, scale } = Dimensions.get("window");
+    const { drawingBufferWidth: bufferWidth, drawingBufferHeight: bufferHeight } = gl;
 
     /*
      This stuff is W.I.P: Trying to implement a canvas.
@@ -74,18 +72,6 @@ class Scene extends React.Component {
     global.canvas = canvas
     global.canvasContext = ctx;
 
-
-    /*
-      Hack in a stencil flag
-    */
-    gl.getContextAttributes = (() => {
-      return {
-        stencil: true
-      }
-    });
-    window.WebGLRenderingContext = gl;
-
-
     /*
       Setup Pixi Application
       Pass through our EXGL context
@@ -93,6 +79,7 @@ class Scene extends React.Component {
 
     const app = new PIXI.Application(width, height, {
       context: gl,
+      resolution: scale,
       backgroundColor: 0x1099bb
     });
 
@@ -125,7 +112,7 @@ class Scene extends React.Component {
     graphics.lineStyle(4, 0xffd900, 1);
 
     // draw a shape
-    graphics.moveTo(50, 50);
+    graphics.moveTo(5, 5);
     graphics.lineTo(250, 50);
     graphics.lineTo(100, 100);
     graphics.lineTo(50, 50);
@@ -153,8 +140,8 @@ class Scene extends React.Component {
 
     app.stage.addChild(benny);
 
-    window.addEventListener( 'resize', onWindowResize, false );
-
+    window.addEventListener('resize', this.onWindowResize, false);
+    
     this.props.onFinishedLoading && this.props.onFinishedLoading();
   };
 

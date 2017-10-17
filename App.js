@@ -2,13 +2,15 @@ import Expo from 'expo';
 import React from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 
+import './window/domElement';
+import './window/resize';
+
 import { Scene, Loading } from './components'
 
 import cacheAssetsAsync from './util/cacheAssetsAsync';
 import arrayFromObject from './util/arrayFromObject';
 
-import './window/domElement';
-import './window/resize';
+
 
 import Files from './Files';
 
