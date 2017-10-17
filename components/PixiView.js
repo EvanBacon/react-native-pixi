@@ -1,10 +1,11 @@
 import React from 'react';
-import Expo, { GLView } from 'expo';
+import Expo from 'expo';
 import { Dimensions, Platform } from 'react-native'
-import './FakeBrowser'
-import HTMLCanvasElement from './FakeCanvas';
+import '../FakeBrowser'
+import HTMLCanvasElement from '../FakeCanvas';
 import CanvasRenderingContext2D from "react-native-canvas";
 
+import * as PIXI from 'pixi.js';
 
 export const createTextureAsync = async ({ asset }) => {
   if (!asset.localUri) {
@@ -17,9 +18,9 @@ export const createTextureAsync = async ({ asset }) => {
   });
 };
 
-var textStyle = { fill: 0xffffff };
+const textStyle = { fill: 0xffffff };
 function createSprite(texture, text) {
-  var sprite = new PIXI.Sprite(texture);
+  const sprite = new PIXI.Sprite(texture);
   // sprite.addChild(new PIXI.Text(text, textStyle));
   sprite.anchor.set(0.5, 1);
   // sprite.children[0].anchor.set(0.5, 0);
@@ -28,34 +29,32 @@ function createSprite(texture, text) {
   return sprite;
 }
 
-
-var PIXI = require('pixi.js');
-// import phaser from 'phaser-ce'
-export default class PixiScene extends React.Component {
-
-  render() {
-    return (
-      <GLView
-        style={this.props.style}
-        onContextCreate={this._onContextCreate}
-      />
-    );
+export default class PixiView extends React.Component {
+  static defaultProps = {
+    onLoaded: (() => { })
   }
+  shouldComponentUpdate = () => false;
+
+  render = () => (
+    <Expo.GLView
+      style={this.props.style}
+      onContextCreate={this._onContextCreate}
+    />
+  );
 
   _onContextCreate = async gl => {
     const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
     const { width: screenWidth, height: screenHeight, scale } = Dimensions.get("window");
 
 
-     /*
-      This stuff is W.I.P: Trying to implement a canvas.
-    */
+    /*
+     This stuff is W.I.P: Trying to implement a canvas.
+   */
 
-    // console.log({ width, height, scale });
     // gl.enableLogging = true;
     const isAndroid = Platform.OS === 'android';
-    var ctx = new CanvasRenderingContext2D(gl, width, height, isAndroid ? scale : 1),
-      // Mockup of canvas class to bypass sanity checks inside chartjs
+    const ctx = new CanvasRenderingContext2D(gl, width, height, isAndroid ? scale : 1),
+
       canvas = new HTMLCanvasElement(ctx, width, height);
     ctx.drawImage = (image, x, y) => {
       image = image || { width: 10, height: 10 };
@@ -63,6 +62,7 @@ export default class PixiScene extends React.Component {
     }
     ctx.getImageData = (x, y, width, height) => {
     }
+
     // Global in RN is like window in browser
     global.HTMLCanvasElement = HTMLCanvasElement;
     global.CanvasRenderingContext2D = CanvasRenderingContext2D;
@@ -86,7 +86,7 @@ export default class PixiScene extends React.Component {
       Pass through our EXGL context
     */
 
-    var app = new PIXI.Application(width, height, {
+    const app = new PIXI.Application(width, height, {
       context: gl,
       backgroundColor: 0x1099bb
     });
@@ -99,7 +99,7 @@ export default class PixiScene extends React.Component {
     */
     // create a new Sprite from an image path
     // console.warn(texture.data.type, texture.data.localUri)
-    var benny = PIXI.Sprite.from('https://usefulstooges.files.wordpress.com/2016/10/affleck.jpg')
+    const benny = PIXI.Sprite.from('https://usefulstooges.files.wordpress.com/2016/10/affleck.jpg')
 
     // center the sprite's anchor point
     benny.anchor.set(0.5);
@@ -113,14 +113,14 @@ export default class PixiScene extends React.Component {
     /*
       Draw some random Graphics
     */
-    var graphics = new PIXI.Graphics();
+    const graphics = new PIXI.Graphics();
 
     // set a fill and line style
     graphics.beginFill(0xFF3300);
     graphics.lineStyle(4, 0xffd900, 1);
 
     // draw a shape
-    graphics.moveTo(50,50);
+    graphics.moveTo(50, 50);
     graphics.lineTo(250, 50);
     graphics.lineTo(100, 100);
     graphics.lineTo(50, 50);
@@ -141,7 +141,7 @@ export default class PixiScene extends React.Component {
     // draw a circle, set the lineStyle to zero so the circle doesn't have an outline
     graphics.lineStyle(0);
     graphics.beginFill(0xFFFF0B, 0.5);
-    graphics.drawCircle(470, 90,60);
+    graphics.drawCircle(470, 90, 60);
     graphics.endFill();
 
     app.stage.addChild(graphics);
@@ -156,5 +156,7 @@ export default class PixiScene extends React.Component {
       //  benny.rotation += 0.1 * delta;
       gl.endFrameEXP();
     });
+
+    this.props.onLoaded && this.props.onLoaded();
   };
 }

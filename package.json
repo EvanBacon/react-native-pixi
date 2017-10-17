@@ -6,12 +6,12 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
-    "expo": "^20.0.0",
+    "expo": "^21.0.2",
     "path": "^0.12.7",
     "pixi.js": "^4.5.3",
-    "react": "16.0.0-alpha.12",
+    "react": "16.0.0",
     "prop-types": "^15.5.10",    
-    "react-native": "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz",
     "react-native-canvas": "^0.1.6",
     "url": "^0.11.0"
   },

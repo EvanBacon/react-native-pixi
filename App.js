@@ -1,12 +1,22 @@
 import Expo from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import PixiScene from './PixiScene'
+import { PixiView } from './components'
 
 export default class App extends React.Component {
+  state = {
+    sceneLoaded: false
+  };
+
+  renderLoading = () => (
+    <Expo.AppLoading />
+  )
   render() {
     return (
-      <PixiScene style={{flex: 1, backgroundColor: 'gray'}} />
+      <View style={{ flex: 1 }}>
+        <PixiView onLoaded={() => this.setState({ sceneLoaded: true })} style={{ flex: 1 }} />
+        {!this.state.sceneLoaded && this.renderLoading()}
+      </View>
     );
   }
 }

@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "pixi",
+    "name": "Pixi",
     "description": "2D Graphics Library",
     "slug": "pixi",
     "privacy": "public",
-    "sdkVersion": "20.0.0",
+    "sdkVersion": "21.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
-    "primaryColor": "#ea1e63",
+    "primaryColor": "#e91f63",
     "icon": "./assets/icons/app-icon.png",
     "loading": {
+      "backgroundColor": "#272b34",
       "icon": "./assets/icons/loading-icon.png",
       "hideExponentText": false
     },
