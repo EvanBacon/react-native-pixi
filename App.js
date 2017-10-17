@@ -10,10 +10,7 @@ import { Scene, Loading } from './components'
 import cacheAssetsAsync from './util/cacheAssetsAsync';
 import arrayFromObject from './util/arrayFromObject';
 
-
-
 import Files from './Files';
-
 
 export default class App extends React.Component {
   state = {
@@ -59,7 +56,6 @@ export default class App extends React.Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

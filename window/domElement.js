@@ -117,9 +117,9 @@ window.addEventListener = window.addEventListener || ((eventName, listener) => w
 window.removeEventListener = window.removeEventListener || ((eventName, listener) => window.emitter.removeListener(eventName, listener));
 window.document = new DOMDocument();
 window.document.body = new DOMElement('body');
-window.location = "file://"; // <- Not sure about this... or anything for that matter ¯\_(ツ)_/¯
+window.location = "data:"; // <- Not sure about this... or anything for that matter ¯\_(ツ)_/¯
 global.userAgent = global.navigator.userAgent = "iPhone"; // <- This could be made better, but I'm not sure if it'll matter for PIXI
-
+global.HTMLVideoElement = global.HTMLCanvasElement = () => ({});
 global.document = window.document;
 
 /// I'm just guessing now
@@ -143,7 +143,7 @@ class CustomImage extends Image {
         }
     }
 }
-global.Image = CustomImage;
+global.HTMLImageElement = global.Image = CustomImage;
 global.performance = null;
 
 /// Old version
