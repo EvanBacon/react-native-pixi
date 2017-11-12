@@ -9,10 +9,6 @@
     lodash "^4.17.4"
     react-native-vector-icons "4.1.1"
 
-"@types/node@^6.0.46":
-  version "6.0.89"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.89.tgz#154be0e6a823760cd6083aa8c48f952e2e63e0b0"
-
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -1336,10 +1332,6 @@ csurf@~1.8.3:
     cookie-signature "1.0.6"
     csrf "~3.0.0"
     http-errors "~1.3.1"
-
-ctx-polyfill@lifaon74/ctx-polyfill:
-  version "1.1.4"
-  resolved "https://codeload.github.com/lifaon74/ctx-polyfill/tar.gz/f39f2d22be29dc87f211e1c363edb324bee173b4"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -2824,12 +2816,6 @@ parse-uri@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/parse-uri/-/parse-uri-1.0.0.tgz#2872dcc22f1a797acde1583d8a0ac29552ddac20"
 
-parse5@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/parse5/-/parse5-3.0.2.tgz#05eff57f0ef4577fb144a79f8b9a967a6cc44510"
-  dependencies:
-    "@types/node" "^6.0.46"
-
 parseurl@~1.3.0, parseurl@~1.3.1, parseurl@~1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
@@ -3062,13 +3048,6 @@ react-devtools-core@^2.5.0:
 react-native-branch@2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
-
-react-native-canvas@^0.1.6:
-  version "0.1.20"
-  resolved "https://registry.yarnpkg.com/react-native-canvas/-/react-native-canvas-0.1.20.tgz#8dbfbbdbc832c7e789614ca10d78e1814906fc87"
-  dependencies:
-    ctx-polyfill lifaon74/ctx-polyfill
-    parse5 "^3.0.2"
 
 react-native-gesture-handler@1.0.0-alpha.22:
   version "1.0.0-alpha.22"
