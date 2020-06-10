@@ -28,9 +28,9 @@ class DOMElement extends DOMNode {
 
   insertBefore = () => {};
   getContext(contextType) {
-    // if (global.canvasContext) {
-    //   return global.canvasContext;
-    // }
+    if (global.canvasContext) {
+      return global.canvasContext;
+    }
     return {
       fillRect: _ => {},
       drawImage: _ => {},
@@ -87,6 +87,7 @@ class DOMDocument extends DOMElement {
       getContextAttributes: _ => ({
         stencil: true
       }),
+      setTransform: () => ({}),
       getExtension: _ => ({
         loseContext: _ => ({})
       })
@@ -126,7 +127,7 @@ class CustomImage extends Image {
     this.border = null;
     this.complete = true;
     this.crossOrigin = "";
-    this.lowSrc = this.currentSrc = this.src = props.localUri;
+    this.localUri = this.lowSrc = this.currentSrc = this.src = props.localUri;
     this.width = props.width;
     this.height = props.height;
     this.isMap = true;
